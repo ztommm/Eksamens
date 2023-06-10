@@ -1,4 +1,7 @@
+import java.util.Scanner;
+
 public class Quiz {
+    // Masīvs ar visiem jautājumiem
     String[] jautajumi = {
             "Kas ir skaitliskais mainīgais?",
             "Kā saglabā skaitlisko mainīgo?",
@@ -11,6 +14,7 @@ public class Quiz {
             "Kā noapaļot skaitli uz leju/uz augšu Java?",
             "Kā pārvērst tekstu uz skaitlisko mainīgo vērtību Java?"
     };
+    // Masīvs ar atbilžu variantiem
     String[][] izveles = {
             {"Skaitliski dati", "Skaitliskas vērtības", "Mainīgais, kurš var būt vārds", "Mainīgais, kuram ir slepena nozīme"},
             {"int", "String", "double", "boolean"},
@@ -23,6 +27,7 @@ public class Quiz {
             {"Izmantojot Math.lower()", "Izmantojot Math.higher()", "Izmantojot Math.floor()", "Izmantojot Math.ceil()"},
             {"Izmantojot Integer.parseInt()", "Izmantojot int.TransformText()", "Izmantojot Double.parseDouble()", "Izmantojot Double.ToText()"}
     };
+    // Masīvs ar visām pareizām atbildēm
     char[][] pareizasAtbildes = {
             {'A', 'B'},
             {'A', 'C'},
@@ -37,9 +42,44 @@ public class Quiz {
     };
 
     public void saktSpeli() {
+        Scanner scanner = new Scanner(System.in);
+        int punkti = 0;
 
+        // Cikls, iziet caur visiem jautājumiem
+        for (int i = 0; i < jautajumi.length; i++) {
+            System.out.println((i + 1) + ". Jautājums:");
+            System.out.println(jautajumi[i]);
+            paraditIzveles(i);
+            int meginajumi = 0;
+
+            while (true) {
+                System.out.print("Jūsu atbilde: ");
+                String lietotajaAtbilde = scanner.nextLine();
+
+                // Ja atbildēts pareizi pirmajā reizē, tad pieskaita punktu. (meginajumi == 0)
+                if (vaiAtbildePareiza(i, lietotajaAtbilde) && meginajumi == 0) {
+                    punkti++;
+                    System.out.println("Pareizi! Punktam pieskaitīts.");
+                    break;
+
+                } else if (vaiAtbildePareiza(i, lietotajaAtbilde)) {
+                    System.out.println("Pareizi!");
+                    break;
+
+                    // Ja atbildēts nepareizi, tad meginajumi++ un nākamajā mēģinājumā nepieskaita punktu.
+                } else {
+                    meginajumi++;
+                    System.out.println("Nepareizi. Mēģiniet vēlreiz.");
+                }
+            }
+
+            System.out.println();
+        }
+
+        System.out.println("Spēle izspēlēta! Jūsu punkti: " + punkti + "/" + jautajumi.length);
     }
 
+    // Parādā visas atbilžu izvēles
     public void paraditIzveles(int jautajumuSkaits) {
         String[] jautajumuIzveles = izveles[jautajumuSkaits];
         for (int i = 0; i < jautajumuIzveles.length; i++) {
@@ -47,6 +87,7 @@ public class Quiz {
         }
     }
 
+    // Pārbauda vai lietotāja ievadītā atbilde sakrīt ar pareizo atbildi
     public boolean vaiAtbildePareiza(int jautajumuSkaits, String lietotajaAtbilde) {
         char[] pareizaAtbilde = pareizasAtbildes[jautajumuSkaits];
         char lietotajaMinejums = Character.toUpperCase(lietotajaAtbilde.charAt(0));
