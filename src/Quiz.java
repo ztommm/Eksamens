@@ -35,7 +35,7 @@ public class Quiz {
             {'C', 'D'},
             {'A', 'C'}
     };
-    public void startQuiz() {
+    public void saktSpeli() {
 
     }
 }
