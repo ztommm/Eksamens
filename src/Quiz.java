@@ -35,7 +35,27 @@ public class Quiz {
             {'C', 'D'},
             {'A', 'C'}
     };
+
     public void saktSpeli() {
 
+    }
+
+    public void paraditIzveles(int jautajumuSkaits) {
+        String[] jautajumuIzveles = izveles[jautajumuSkaits];
+        for (int i = 0; i < jautajumuIzveles.length; i++) {
+            System.out.println((char) ('A' + i) + ") " + jautajumuIzveles[i]);
+        }
+    }
+
+    public boolean vaiAtbildePareiza(int jautajumuSkaits, String lietotajaAtbilde) {
+        char[] pareizaAtbilde = pareizasAtbildes[jautajumuSkaits];
+        char lietotajaMinejums = Character.toUpperCase(lietotajaAtbilde.charAt(0));
+
+        for (char atbilde : pareizaAtbilde) {
+            if (atbilde == lietotajaMinejums) {
+                return true;
+            }
+        }
+        return false;
     }
 }
