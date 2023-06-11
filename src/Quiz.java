@@ -48,8 +48,8 @@ public class Quiz {
         // Cikls, iziet caur visiem jautājumiem
         for (int i = 0; i < jautajumi.length; i++) {
             System.out.println((i + 1) + ". Jautājums:");
-            System.out.println(jautajumi[i]);
-            paraditIzveles(i);
+            System.out.println(jautajumi[i]); // Parāda jautājumu, pēc katras pareizas atbildes.
+            paraditIzveles(i); // Parāda atbilžu izvēles
             int meginajumi = 0;
 
             while (true) {
@@ -61,7 +61,7 @@ public class Quiz {
                     punkti++;
                     System.out.println("Pareizi! Punktam pieskaitīts.");
                     break;
-
+                // Ja atbildēts pareizi nepirmajā reizē, tad nepieskaita puntku. (meginajumi > 0)
                 } else if (vaiAtbildePareiza(i, lietotajaAtbilde)) {
                     System.out.println("Pareizi!");
                     break;
@@ -79,21 +79,21 @@ public class Quiz {
         System.out.println("Spēle izspēlēta! Jūsu punkti: " + punkti + "/" + jautajumi.length);
     }
 
-    // Parādā visas atbilžu izvēles
+    // Parāda konkrētā jautājuma pieejamās opcijas.
     public void paraditIzveles(int jautajumuSkaits) {
-        String[] jautajumuIzveles = izveles[jautajumuSkaits];
-        for (int i = 0; i < jautajumuIzveles.length; i++) {
+        String[] jautajumuIzveles = izveles[jautajumuSkaits]; // Saglabā konkrētā jautājuma opcijas.
+        for (int i = 0; i < jautajumuIzveles.length; i++) { // Cikls, kurš pēc katras pareizās atbildes, parāda nākamās izvēles.
             System.out.println((char) ('A' + i) + ") " + jautajumuIzveles[i]);
         }
     }
 
     // Pārbauda vai lietotāja ievadītā atbilde sakrīt ar pareizo atbildi
     public boolean vaiAtbildePareiza(int jautajumuSkaits, String lietotajaAtbilde) {
-        char[] pareizaAtbilde = pareizasAtbildes[jautajumuSkaits];
-        char lietotajaMinejums = Character.toUpperCase(lietotajaAtbilde.charAt(0));
+        char[] pareizaAtbilde = pareizasAtbildes[jautajumuSkaits]; // Iegūst pareizās atbildes uz pašreizējo jautājumu, piekļūstot pareizasAtbildes masīvam.
+        char lietotajaMinejums = Character.toUpperCase(lietotajaAtbilde.charAt(0)); // Pārmaina lietotāja ievadīto burtu uz lielu
 
         for (char atbilde : pareizaAtbilde) {
-            if (atbilde == lietotajaMinejums) {
+            if (atbilde == lietotajaMinejums) { // Pārbauda, ja lietotāja ievadītā atbilde sakrīt ar pareizo atbildi un pārmaina vaiAtbildePareiza uz True
                 return true;
             }
         }
