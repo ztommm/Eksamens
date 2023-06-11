@@ -3,4 +3,4 @@
 ## Darāmo darbu saraksts
 - [x] Izveidot mācību materiālu
 - [x] Izveidot programmu, kura strādā pēc noteiktiem noteikumiem.
-- [ ] Izveidot UML diagrammas.  
+- [x] Izveidot UML diagrammas.  
