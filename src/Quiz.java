@@ -44,7 +44,7 @@ public class Quiz {
     public void saktSpeli() {
         Scanner scanner = new Scanner(System.in);
         int punkti = 0;
-
+            System.out.println("\nSpēle par biežāk lietotām funkcijām darbībām ar skaitliskajiem mainīgajiem \n");
         // Cikls, iziet caur visiem jautājumiem
         for (int i = 0; i < jautajumi.length; i++) {
             System.out.println((i + 1) + ". Jautājums:");
