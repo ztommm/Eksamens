@@ -4,3 +4,4 @@
 - [x] Izveidot mācību materiālu
 - [x] Izveidot programmu, kura strādā pēc noteiktiem noteikumiem.
 - [x] Izveidot UML diagrammas.  
+- [x] Izveidot prezentāciju.
